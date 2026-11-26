@@ -1,33 +1,44 @@
 import { useState } from 'react'
+import ki from "../assets/ki.jpg"
+import { useNavigate } from 'react-router-dom'
 function Login(){
-     {/*const [count, setCount] = useState(0)
       const [email, setEmail] = useState('')
-      const [pass, setPass] = useState('')*/}
-      
+      const [password, setPassword] = useState('')
+      const navigate=useNavigate();
       const [formdata ,setFormdata]=useState({
         email:" ",
         password:" "
       })
       function handlechange(e){
-        setFormdata(...formdata,
-          [e.target.name]=e.target.value
-        )
+        setFormdata({...formdata,
+          [e.target.name]:e.target.value
+      })
       }
-      function print(e){
+      const print=(e)=>{
         e.preventDefault()
-        console.log(email,password)
+        console.log(formdata)
+        alert("Login successful!")
+        navigate("../dashboard",{state:formdata})
       }
-    return(
-    <div><div class="flex flex-col items-center space-y-5 border border-gray-300 rounded-lg p-4 w-fit mx-auto bg-gray-50">
-    <form>
-      Email :  <input class="border border-gray-300 rounded-md px-3 py-2 focus:outline-2 focus:outline-offset-2 focus:outline-blue-600" type="email" placeholder='your email' name="email"value={email} onChange={handlechange}></input>
-    </form>  
-    <form>
-      Password :  <input class="border border-gray-300 rounded-md px-3 py-2 focus:outline-2 focus:outline-offset-2 focus:outline-blue-600" type="password" placeholder=' password'name="password" value={password} onChange={handlechange}></input>
-    </form>
+    return(     
+    <div>
+    <img src={ki} alt="A clear description of the image" className='block mx-auto w-1/7' /><br></br>  
+    <form onSubmit={print}>
+    <div className="flex flex-col items-center space-y-5 border border-gray-300 rounded-lg p-4 w-fit mx-auto bg-gray-50">
+    <div>
+      Email :  <input className="border border-gray-300 rounded-md px-3 py-2 focus:outline-2 focus:outline-offset-2 focus:outline-blue-600" 
+                      type="email" placeholder='Enter email' name="email" onChange={handlechange}></input>
+    </div> 
+    <div>
+      Password :  <input className="border border-gray-300 rounded-md px-3 py-2 focus:outline-2 focus:outline-offset-2 focus:outline-blue-600" 
+                         type="password" placeholder='Enter password' name="password"  onChange={handlechange}></input>
+    </div>
     <br></br>
-    <button class="bg-blue-600 text-white font-medium px-4 py-2 rounded-lg shadow-sm hover:bg-blue-700 active:bg-blue-800  transition-colors cursor-pointer" type="Submit" onClick={(e)=>print(e)}>Login</button>
-    </div></div>
+    <button className="bg-blue-600 text-white font-medium px-4 py-2 rounded-lg shadow-sm hover:bg-blue-700 active:bg-blue-800  transition-colors cursor-pointer" 
+            type="Submit">Login</button>
+    </div>
+    </form>
+    </div>
     )
 }
 export default Login
