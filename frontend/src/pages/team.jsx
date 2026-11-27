@@ -1,6 +1,6 @@
 function Team() {
     return ( 
-        <div>TEAM</div>
+        <div className='text-3xl text-center'>TEAM</div>
      );
 }
 
