@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { registerSchema } from "../components/formSchema/registerSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link} from "react-router-dom";
 function Register() {
     const {register,handleSubmit,formState:{errors}}=useForm({
         resolver:zodResolver(registerSchema)
@@ -33,7 +33,8 @@ function onSubmit1(data){
 
             <button className="bg-blue-600 text-white font-medium px-4 py-2 rounded-lg shadow-sm hover:bg-blue-700 active:bg-blue-800  transition-colors cursor-pointer" 
             type="submit">Register</button></div>
-        </form>
+        </form><br></br>
+        <p className="text-center">Already have an account!   <Link className="text-blue-700" to="/login">Login</Link></p>
         </div>
      );
     }

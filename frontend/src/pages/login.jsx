@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import ki from "../assets/ki.jpg"
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate,Link } from 'react-router-dom'
 function Login(){
     const location=useLocation();
       const navigate=useNavigate();
@@ -41,10 +41,11 @@ function Login(){
                          type="password" placeholder='Enter password' name="password"  onChange={handlechange}></input>
     </div>
     <br></br>
-    <button className="bg-blue-600 text-white font-medium px-4 py-2 rounded-lg shadow-sm hover:bg-blue-700 active:bg-blue-800  transition-colors cursor-pointer" 
+    <button className="bg-blue-600 text-white  px-4 py-2 rounded-lg  hover:bg-blue-700 active:bg-blue-800  transition-colors cursor-pointer" 
             type="Submit">Login</button>
     </div>
-    </form>
+    </form><br></br>
+    <p className="text-center">Don't have an account?<Link className="text-blue-700"to="/register">Register</Link></p>    
     </div>
     )
 }
