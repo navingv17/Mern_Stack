@@ -22,7 +22,7 @@ function Login(){
       alert("Login successful!")
       navigate("/dashboard",{state:logindata})}
       else{
-      alert("INVALID CREDENTIALS!")
+      alert ("INVALID CREDENTIALS!")
       }
     }
     return(     
