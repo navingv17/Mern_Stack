@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import API from "../components/api"
 function Dashboard() {
     const location=useLocation();
     const [userdata,setUserdata]=useState(" ")
@@ -10,8 +11,14 @@ function Dashboard() {
     }
     useEffect(()=>{
                 setUserdata(location.state)
-                console.log(userdata),[count]
+                console.log(count),[count]
     })
+
+    const checkendpoint=async()=>{
+        const response=await API.get("/api/get")
+        console.log(response.data);
+    }
+
     return ( 
         <div><div>
         <nav className="bg-slate-800 text-white px-6 py-4 shadow-md">
@@ -30,7 +37,8 @@ function Dashboard() {
         </div>
         <div className="flex justify-center items-center"><button className=" bg-blue-600 text-white font-medium px-4 py-2 rounded-lg shadow-sm hover:bg-blue-700 active:bg-blue-800  transition-colors cursor-pointer" 
         onClick={display}>Display details</button></div>
-        <button onClick={()=>setCount(count+1)}>count</button>
+        <button onClick={()=>setCount(count+1)}>count</button><br></br>
+        <button onClick={()=>checkendpoint()}>API</button>
         </div> 
         
      );
